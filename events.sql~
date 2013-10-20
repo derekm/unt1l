@@ -1,0 +1,22 @@
+-- Table: "UNT1L".events
+
+-- DROP TABLE "UNT1L".events;
+
+CREATE TABLE "UNT1L".events
+(
+  event_id bigserial NOT NULL,
+  category_id integer NOT NULL,
+  title text NOT NULL,
+  start timestamp with time zone NOT NULL,
+  duration interval,
+  location text NOT NULL,
+  cost money,
+  ongoing boolean,
+  description text,
+  CONSTRAINT events_pkey PRIMARY KEY (event_id),
+  CONSTRAINT events_title_start_location_key UNIQUE (title, start, location)
+)
+WITH (
+  OIDS=FALSE
+);
+
